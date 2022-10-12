@@ -8,3 +8,9 @@ This repository is to help student to develop together their javascript project
 - Worobo Jean Luis
 - Kangue Patrick Loic
 - Sa'a Feujio Helena Brenda
+
+## Technologies utilisées
+
+- HTML
+- CSS
+- JAVASCRIPT
