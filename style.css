@@ -1,170 +1,193 @@
 body
 {
-    background-color: rgb(199, 197, 227);
-    font-family: "calibri";
+    background-color: rgb(225, 160, 62);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.ligne
+hr.infos-spectre
+{
+    width: 70%;
+}
+
+hr.section1-section2
+{
+    height: 65%;
+    margin-top: 100px;
+    border-color: rgba(39, 37, 37, 0.658);
+    background-color: rgba(50, 49, 49, 0.701);
+}
+
+/* color */
+/* rgb(148, 206, 137) */
+
+.ligne 
 {
     display: flex;
     justify-content: center;
-    height: 600px;
-    margin-top: 300px;
+
+    margin-top: 80px;
+    width: 100%;
+    height: 580px;
+    /* background-color: aliceblue; */
 }
 
 .container
 {
-    width: 80%;
-    background-color: rgb(5, 19, 50);
-    border-radius: 2px;
-    border-color: blueviolet;
-    color: white;
-
+    display: flex;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 70%;
+    height: 100%;
 }
 
-.first-container
+.container .section1
+{
+    width: 40%;
+    height: 99%;
+    /* background-color: bisque; */
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.section1 .titre
+{
+    color: white;
+    font-size: 2em;
+    width: 100%;
+    height: 10%;
+}
+
+.section1 .img
+{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 30%;
+}
+
+.section1 .img img.track-img
+{
+    border-radius: 85px;
+}
+
+.section1 .track-infos
 {
     width: 100%;
-    height: 85%;
-
-    display: flex;
+    height: 17%;
+    /* background-color: rgb(105, 94, 80); */
 }
 
-.first-container .title-container
+.section1 .track-infos .track-title
 {
-   height: 100%;
-   width: 30%;
+    font-size: 1.3em;
+    color: white;
 }
 
-.title-bar
+.section1 .track-infos .track-autor
+{
+    font-size: 1.8em;
+    color: white;
+}
+
+
+.section1 .spectre
+{
+    width: 100%;
+    height: 16%;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section1 .spectre .vibration
+{
+    background: #f1f1f1;
+    height: 80%;
+    width: 10px;
+    border-radius: 50px;
+    margin: 0px 5px;
+    animation: animate 1.4s linear infinite;
+}
+
+.section1 .ranges
+{
+    width: 100%;
+    height: 15%;
+}
+
+.section1 .ranges .duration input.elapsed
+{
+    width: 60%;
+}
+
+.section1 .buttons
+{
+    width: 100%;
+    height: 10%;
+    background-color: rgb(89, 85, 79);
+    border-bottom-left-radius: 8px;
+}
+
+.section1 .buttons .contain
 {
     display: flex;
     justify-content: space-between;
-
-    height: 10%;
-    width: 100%;
-
-    font-size: 2.3em;
-    font-family: "Arial Black";
-    color: rgb(255, 255, 255);
 }
 
-.photo-container
+.section1 .buttons .contain button
 {
-    width: 100%;
-    height: 75%;
+    background-color: rgb(225, 160, 62);
 }
 
-.photo-container .img-container
+.container .section2
 {
-    height: 85%;
-}
-
-.photo-container .img-container img.couverture
-{
-    margin-top: 30px;
-}
-
-
-
-.vibe-container
-{
-    width: 100%;
-    height: 15%;
-
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-.vibe 
-{
-    width: 2%;
-    height: 24%;
-    background-color: mediumpurple;
-    margin: 2px;
-    margin-top: 25px;
-    border-radius: 7px;
-    animation: alternate 2s vibes 1s infinite;
-}
-
-/* Musics-container */
-
-.musics-container
-{
-   height: 100%;
-   width: 70%;
-   background-color: rgb(4, 4, 45);
-}
-
-.en-tete
-{
-    height: 12%;
-    width: 100%;
-    background-color: rgb(13, 13, 42);
-}
-
-.corp
-{
-    width: 100%;
-    height: 78%;
-}
-
-.item
-{
-    width: 100%;
-    height: 12%;
-    border-color: aqua;
-    border-width: 3px;
-}
-
-.items
-{
-    width: 100%;
-    height: 12%;
-    border-color: aqua;
-    border-width: 3px;
-    background-color: rgb(13, 13, 42);
-
-}
-.barre-option
-{
-    width: 100%;
-    height: 10%;
-}
-
-
-/* second container */
-
-.second-container
-{
-    background-color: blueviolet;
-    width: 100%;
-    height: 15%;
-    display: flex;
-}
-
-.section1 
-{
-    background-color: aqua;
-    width: 30%;
-    height: 100%;
+    width: 60%;
+    height: 99%;
+    /* background-color: rgb(148, 206, 137); */
+    border-top-right-radius: 8px;
+    /* border-left: 2px solid rgba(95, 93, 93, 0.879); */
 }
 
 /* Keyframes */
 
-@keyframes vibes 
+@keyframes animate
 {
-    0%
-    {
-        height: 24%;
+    50%{
+        height: 20%;
+        background: #4286f4;
     }
-    50%
-    {
-        height: 40%;
+    100%{
+        height: 40px;
     }
-    100%
-    {
-        height: 65%;
-    }
+}
+
+ .section1 .spectre .vibration:nth-child(1)
+{
+    animation-delay: 0.3s;
+}
+.section1 .spectre .vibration:nth-child(2)
+{
+    animation-delay: 0.2s;
+}
+.section1 .spectre .vibration:nth-child(3)
+{
+    animation-delay: 0.6s;
+}
+.section1 .spectre .vibration:nth-child(4)
+{
+    animation-delay: 0.8s;
+}
+.section1 .spectre .vibration:nth-child(5)
+{
+    animation-delay: 0.2s;
+}
+.section1 .spectre .vibration:nth-child(6)
+{
+    animation-delay: 0.8s;
+}
+.section1 .spectre .vibration:nth-child(7)
+{
+    animation-delay: 0.4s;
 }

@@ -5,67 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>AIMP</title>
+    <title>Music player</title>
 </head>
 <body>
     <div class="ligne">
         <div class="container">
-             <div class="first-container">
-                <div class="title-container">
-                    <div class="title-bar">
-                        <span class="title"> <font 
-                            color="blueviolet">
-                            A</font>IMP </span>
-                            <span class="img">
-                                <img src="image/settings_50px.png" 
-                                alt="" height="30px" width="30px">
-                            </span>
-                    </div>
-                    <div class="photo-container">
-                        <div class="img-container" align="center">
-                            <img src="../templates/image/photo_moi.jpg" alt="" class="couverture" width="85%" height="80%">
-                        </div>
-                       <div class="infos-piste"
-                        align="center" 
-                       style="font-size: 1.3em;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing.
-                       </div>
-                    </div>
-                    <div class="vibe-container" align="center">
-                        <div class="vibe"></div>
-                        <div class="vibe"></div>
-                        <div class="vibe"></div>
-                        <div class="vibe"></div>
-                        <div class="vibe"></div>
-                    </div>
+            <div class="section1">
+                <div class="titre" align="center">Music Player</div>
+                <div class="img"><img src="../JS_PROJECT/image/photo_moi.jpg" alt="" class="track-img"></div>
+
+                <div class="track-infos">
+                    <div class="track-title" align="center">Le titre de la musique</div>
+                    <br>
+                    <div class="track-autor" align="center">L'auteur de la musique</div>
                 </div>
 
-                <div class="musics-container">
-                    <div class="en-tete"></div>
-                    <div class="corp">
-                        <div class="item">titre1</div>
-                        <div class="items">titre1</div>
-                        <div class="item">titre1</div>
-                        <div class="items">titre1</div>
-                        <div class="item">titre1</div>
-                        <div class="items">titre1</div>
-                        <div class="item">titre1</div>
-                        <div class="items">titre1</div>
-                     
-                    </div>
-                    <div class="barre-option"></div>
-                    
+                <hr class="infos-spectre" align="center">
+                <div class="spectre">
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
                 </div>
-             </div>
-             <div class="second-container">
-                <div class="section1"></div>
-                <div class="section2"></div>
-             </div>
+                <div class="ranges">
+                    <div class="duration" align="center">
+                        <span class="elapsed-time">00:00</span>
+                        <input type="range" name="elapsed" id="" class="elapsed" min="1" max="100" value="0">
+                        <span class="total-time">00:00</span>
+                    </div>
+                    <br>
+                    <div class="volume" align="center">
+                        <!-- <span class="min-val">0</span> -->
+                         <input type="range" name="volume" min="0" max="100" value="60" id="" class="volume">
+                        <!-- <span class="max-val">100</span>  -->
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="contain" align="center">
+                        <button>preview</button>
+                        <button>play/pause</button>
+                        <button>random</button>
+                        <button>replay</button>
+                        <button onclick="random_bg_color()">next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section2"></div>
         </div>
     </div>
+    
+    <script>
+        function random_bg_color(){
+    let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'];
+    let a;
 
-    <br>
-    <br>
-    <br>
+    function populate(a){
+        for(let i=0; i<6; i++){
+            let x = Math.round(Math.random() * 14);
+            let y = hex[x];
+            a += y;
+        }
+        return a;
+    }
+    let Color1 = populate('#');
+    let Color2 = populate('#');
+    var angle = 'to right';
+
+    let gradient = 'linear-gradient(' + angle + ',' + Color1 + ', ' + Color2 + ")";
+    document.body.style.background = gradient;
+}
+    </script>
 </body>
 </html>
