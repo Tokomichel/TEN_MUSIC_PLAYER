@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <title>Music player</title>
+</head>
+<body>
+    <div class="ligne">
+        <div class="container">
+            <div class="section1">
+                <div class="titre" align="center">Music Player</div>
+                <div class="img"><img src="../JS_PROJECT/image/photo_moi.jpg" alt="" class="track-img"></div>
+
+                <div class="track-infos">
+                    <div class="track-title" align="center">Le titre de la musique</div>
+                    <br>
+                    <div class="track-autor" align="center">L'auteur de la musique</div>
+                </div>
+
+                <hr class="infos-spectre" align="center">
+                <div class="spectre">
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                    <span class="vibration"></span>
+                </div>
+                <div class="ranges">
+                    <div class="duration" align="center">
+                        <span class="elapsed-time">00:00</span>
+                        <input type="range" name="elapsed" id="" class="elapsed" min="1" max="100" value="0">
+                        <span class="total-time">00:00</span>
+                    </div>
+                    <br>
+                    <div class="volume" align="center">
+                        <!-- <span class="min-val">0</span> -->
+                         <input type="range" name="volume" min="0" max="100" value="60" id="" class="volume">
+                        <!-- <span class="max-val">100</span>  -->
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="contain" align="center">
+                        <button>preview</button>
+                        <button>Random</button>
+                        <button onclick="load_music()">Play/Pause</button>
+                        <button onclick="hee_vampire()">replay</button>
+                        <button onclick="hee_vampire()">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section2"></div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
