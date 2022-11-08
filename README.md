@@ -8,7 +8,7 @@ This repository is to help student to develop together their javascript project
 - Worobo Jean_Luis
 - Kangue Loic
 
-## This Will be done by using 
+## This will be done using 
 - HTML
 - CSS
 - JAVASCRIPT
