@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,55 +8,60 @@
     <script src="app.js" defer></script>
     <title>Music player</title>
 </head>
-
 <body>
+    <div class="mode">
+        <button type="submit" onclick="mode()" id="mode">Nuit</button>
+    </div>
     <div class="ligne">
         <div class="container">
             <div class="section1">
+
                 <div class="titre" align="center">Music Player</div>
-                <div class="img"><img src="../JS_PROJECT/image/photo_moi.jpg" alt="" class="track-img"></div>
+                <div class="img"><img src="images/null.jpg " alt="" class="track-img"></div>
 
                 <div class="track-infos">
                     <div class="track-title" align="center">Le titre de la musique</div>
                     <br>
-                    <div class="track-autor" align="center">L'auteur de la musique</div>
+                    <div class="track-author" align="center">L'auteur de la musique</div>
                 </div>
 
                 <hr class="infos-spectre" align="center">
                 <div class="spectre">
-                    <span class="vibration"></span>
-                    <span class="vibration"></span>
-                    <span class="vibration"></span>
-                    <span class="vibration"></span>
-                    <span class="vibration"></span>
-                    <span class="vibration"></span>
-                    <span class="vibration"></span>
+                    <span class="vibration" id="vibes"></span>
+                    <span class="vibration" id="vibes"></span>
+                    <span class="vibration" id="vibes"></span>
+                    <span class="vibration" id="vibes"></span>
+                    <span class="vibration" id="vibes"></span>
+                    <span class="vibration" id="vibes"></span>
+                    <span class="vibration" id="vibes"></span>
                 </div>
                 <div class="ranges">
-
                     <div class="duration" align="center">
-                        <span class="elapsed-time">00:00</span>
-                        <input type="range" name="elapsed" id="" class="elapsed" min="1" max="100" value="0">
+                        <span class="elapsed-time" id="elapsed_time">00:00</span>
+                        <input type="range" name="elapsed" id="" class="elapsed" min="1" max="100" value="0" onchange="seek_to()">
                         <span class="total-time">00:00</span>
                     </div>
                     <br>
                     <div class="volume" align="center">
                         <!-- <span class="min-val">0</span> -->
-                        <input type="range" name="volume" min="0" max="100" value="60" id="" class="volume">
+                         <input type="range" name="volume" min="0" max="100" value="60" id="" class="le-volume" onchange="seek_to_volume()">
                         <!-- <span class="max-val">100</span>  -->
                     </div>
                 </div>
                 <div class="buttons">
                     <div class="contain" align="center">
-                        <button>preview</button>
-                        <button>Random</button>
-                        <button onclick="load_music()">Play/Pause</button>
-                        <button onclick="hee_vampire()">replay</button>
-                        <button onclick="hee_vampire()">Next</button>
+                        <button onclick="preview_track()">preview</button>
+                        <button onclick="random()">Random</button>
+                        <button onclick="play_music()" id="play">Play/Pause</button>
+                        <button onclick="replay()">replay</button>
+                        <button onclick="next_track()">Next</button>
+                    </div>
+                    <br>
+                    <div class="functions" align="center">
+                         <button class="auto-play" onclick="autoPlay()">Auto-play</button>
                     </div>
                 </div>
             </div>
-
             <div class="section2">
                 <div id="box">
                     <label for="colorPicker">THEME :</label>
@@ -67,8 +71,7 @@
             </div>
         </div>
     </div>
-
-
+    
+    
 </body>
-
 </html>
