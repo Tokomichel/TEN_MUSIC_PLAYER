@@ -1,38 +1,35 @@
-body
-{
+body {
     background-color: rgb(225, 160, 62);
     font-family: Arial, Helvetica, sans-serif;
 }
 
-hr.infos-spectre
-{
+hr.infos-spectre {
     width: 70%;
 }
 
-hr.section1-section2
-{
+hr.section1-section2 {
     height: 65%;
     margin-top: 100px;
     border-color: rgba(39, 37, 37, 0.658);
     background-color: rgba(50, 49, 49, 0.701);
 }
 
+
 /* color */
+
+
 /* rgb(148, 206, 137) */
 
-.ligne 
-{
+.ligne {
     display: flex;
     justify-content: center;
-
     margin-top: 80px;
     width: 100%;
     height: 580px;
     /* background-color: aliceblue; */
 }
 
-.container
-{
+.container {
     display: flex;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -40,8 +37,7 @@ hr.section1-section2
     height: 100%;
 }
 
-.container .section1
-{
+.container .section1 {
     width: 40%;
     height: 99%;
     /* background-color: bisque; */
@@ -49,50 +45,41 @@ hr.section1-section2
     border-bottom-right-radius: 8px;
 }
 
-.section1 .titre
-{
+.section1 .titre {
     color: white;
     font-size: 2em;
     width: 100%;
     height: 10%;
 }
 
-.section1 .img
-{
+.section1 .img {
     display: flex;
     justify-content: center;
-
     width: 100%;
     height: 30%;
 }
 
-.section1 .img img.track-img
-{
+.section1 .img img.track-img {
     border-radius: 85px;
 }
 
-.section1 .track-infos
-{
+.section1 .track-infos {
     width: 100%;
     height: 17%;
     /* background-color: rgb(105, 94, 80); */
 }
 
-.section1 .track-infos .track-title
-{
+.section1 .track-infos .track-title {
     font-size: 1.3em;
     color: white;
 }
 
-.section1 .track-infos .track-autor
-{
+.section1 .track-infos .track-autor {
     font-size: 1.8em;
     color: white;
 }
 
-
-.section1 .spectre
-{
+.section1 .spectre {
     width: 100%;
     height: 16%;
     /* background-color: blueviolet; */
@@ -101,8 +88,7 @@ hr.section1-section2
     align-items: center;
 }
 
-.section1 .spectre .vibration
-{
+.section1 .spectre .vibration {
     background: #f1f1f1;
     height: 80%;
     width: 10px;
@@ -111,40 +97,34 @@ hr.section1-section2
     animation: animate 1.4s linear infinite;
 }
 
-.section1 .ranges
-{
+.section1 .ranges {
     width: 100%;
     height: 15%;
 }
 
-.section1 .ranges .duration input.elapsed
-{
+.section1 .ranges .duration input.elapsed {
     width: 60%;
 }
 
-.section1 .buttons
-{
+.section1 .buttons {
     width: 100%;
     height: 10%;
     /* background-color: rgb(89, 85, 79); */
     border-bottom-left-radius: 8px;
 }
 
-.section1 .buttons .contain
-{
+.section1 .buttons .contain {
     display: flex;
     justify-content: space-between;
     /* background-color: burlywood; */
     margin-top: 20px;
 }
 
-.section1 .buttons .contain button
-{
+.section1 .buttons .contain button {
     /* background-color: rgb(225, 160, 62); */
 }
 
-.container .section2
-{
+.container .section2 {
     width: 60%;
     height: 99%;
     /* background-color: rgb(148, 206, 137); */
@@ -152,44 +132,51 @@ hr.section1-section2
     /* border-left: 2px solid rgba(95, 93, 93, 0.879); */
 }
 
+
 /* Keyframes */
 
-@keyframes animate
-{
-    50%{
+@keyframes animate {
+    50% {
         height: 20%;
         background: #4286f4;
     }
-    100%{
+    100% {
         height: 40px;
     }
 }
 
- .section1 .spectre .vibration:nth-child(1)
-{
+.section1 .spectre .vibration:nth-child(1) {
     animation-delay: 0.3s;
 }
-.section1 .spectre .vibration:nth-child(2)
-{
+
+.section1 .spectre .vibration:nth-child(2) {
     animation-delay: 0.2s;
 }
-.section1 .spectre .vibration:nth-child(3)
-{
+
+.section1 .spectre .vibration:nth-child(3) {
     animation-delay: 0.6s;
 }
-.section1 .spectre .vibration:nth-child(4)
-{
+
+.section1 .spectre .vibration:nth-child(4) {
     animation-delay: 0.8s;
 }
-.section1 .spectre .vibration:nth-child(5)
-{
+
+.section1 .spectre .vibration:nth-child(5) {
     animation-delay: 0.2s;
 }
-.section1 .spectre .vibration:nth-child(6)
-{
+
+.section1 .spectre .vibration:nth-child(6) {
     animation-delay: 0.8s;
 }
-.section1 .spectre .vibration:nth-child(7)
-{
+
+.section1 .spectre .vibration:nth-child(7) {
     animation-delay: 0.4s;
+}
+
+#box {
+    width: 500px;
+    height: 200px;
+    border: 2px solid rgb(245, 220, 225);
+    padding: 4px 6px;
+    font: 16px "Lucida Grande", "Helvetica", "Arial", "sans-serif", "georgia"
 }

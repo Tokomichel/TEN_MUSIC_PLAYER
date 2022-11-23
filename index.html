@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <script src="app.js" defer></script>
     <title>Music player</title>
 </head>
+
 <body>
     <div class="ligne">
         <div class="container">
@@ -32,6 +34,7 @@
                     <span class="vibration"></span>
                 </div>
                 <div class="ranges">
+
                     <div class="duration" align="center">
                         <span class="elapsed-time">00:00</span>
                         <input type="range" name="elapsed" id="" class="elapsed" min="1" max="100" value="0">
@@ -40,7 +43,7 @@
                     <br>
                     <div class="volume" align="center">
                         <!-- <span class="min-val">0</span> -->
-                         <input type="range" name="volume" min="0" max="100" value="60" id="" class="volume">
+                        <input type="range" name="volume" min="0" max="100" value="60" id="" class="volume">
                         <!-- <span class="max-val">100</span>  -->
                     </div>
                 </div>
@@ -54,10 +57,18 @@
                     </div>
                 </div>
             </div>
-            <div class="section2"></div>
+
+            <div class="section2">
+                <div id="box">
+                    <label for="colorPicker">THEME :</label>
+                    <input type="color" value="#8888ff" id="colorPicker">
+
+                </div>
+            </div>
         </div>
     </div>
-    
-    
+
+
 </body>
+
 </html>
