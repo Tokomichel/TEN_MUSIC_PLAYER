@@ -13,9 +13,50 @@ hr.section1-section2
 {
     height: 65%;
     margin-top: 100px;
-    border-color: rgba(39, 37, 37, 0.658);
+    border-color: rgba(235, 227, 227, 0.658);
     background-color: rgba(50, 49, 49, 0.701);
 }
+
+span.test 
+{
+    background-color: #4286f4;
+}
+
+.mode
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mode .mod 
+{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+input[type=range].elapsed, input[type=range].le-volume
+{
+    -webkit-appearance:none;
+    background-color: #93f007;
+    width:50%;
+    outline:none;
+    height:1px;
+    margin:0 15px;
+    cursor:pointer;
+}
+
+/* input[type=range].elapsed::-webkit-slider-thumb,
+ input[type=range].le-volume::-webkit-slider-thumb
+{
+    -webkit-appearance:none;
+    
+} */
+
+
+
+
+
 
 /* color */
 /* rgb(148, 206, 137) jour:rgb(191, 194, 197) nuit: rgb(26, 47, 69)*/
@@ -36,9 +77,10 @@ hr.section1-section2
     display: flex;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    /* border: 2px solid rgb(62, 110, 69); */
+    border: 2px solid rgb(62, 110, 69);
     width: 70%;
     height: 100%;
+    
 }
 
 .container .section1
@@ -133,6 +175,8 @@ hr.section1-section2
 {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    height: 50%;
 }
 
 .section1 .buttons .functions
@@ -160,7 +204,39 @@ hr.section1-section2
 }
 
 
+/* .section2{
+    
+} */
 
+.section2 .scroll
+{
+    overflow: scroll;
+    border-left: 1px solid rgb(112, 108, 108);
+    width: 100%;
+    height: 90%;
+
+}
+
+
+.section2 .scroll::-webkit-scrollbar
+{
+    width: 4px;
+}
+
+.section2 .scroll::-webkit-scrollbar-thumb
+{
+    background-color: #8f8f93;
+    width: 100%;
+}
+
+.entête{
+    display: flex;
+  
+}
+.entête li{
+    padding: 0 20px;
+    list-style-type: none;
+}
 
 /* Keyframes */
 
@@ -210,4 +286,67 @@ hr.section1-section2
     border: 2px solid rgb(245, 220, 225);
     padding: 4px 6px;
     font: 16px "Lucida Grande", "Helvetica", "Arial", "sans-serif", "georgia"
+}
+
+
+.cercle
+{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    /* border-radius: 55px; */
+    width: 45px;
+    height: 8%;
+    cursor: pointer;
+    /* background-color: aqua; */
+   
+}
+
+.triangle
+{
+    width: 0;
+    height: 0;
+    border-left: 27px solid red;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+}
+
+.trait
+{
+    height: 26px;
+    width: 4px;
+    margin-top: 2px;
+    background-color: red;
+    border-radius: 1px;
+
+}
+
+.pause
+{
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    /* border-radius: 55px; */
+    width: 45px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.trait1
+{
+    height: 93%;
+    width: 7px;
+    margin-top: 2px;
+    background-color: red;
+    border-radius: 2px; 
+
+}
+
+.trian 
+{
+    width: 0;
+    height: 0;
+    border-right: 27px solid red;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
 }

@@ -10,13 +10,17 @@
 </head>
 <body>
     <div class="mode">
-        <button type="submit" onclick="mode()" id="mode">Nuit</button>
+        <button type="submit" onclick="play_music()" id="mode">Nuit</button>
+        <span onclick="mode()" class="test"><img src="crescent_moon_50px.png" alt="" class="mod"></span>
+        <input type="color" value="#8888ff" id="colorPicker">
     </div>
+
+   
     <div class="ligne">
         <div class="container">
             <div class="section1">
 
-                <div class="titre" align="center">Music Player</div>
+                <div class="titre" align="center"> <span class="t">M</span>usic <span class="t">P</span>layer</div>
                 <div class="img"><img src="images/null.jpg " alt="" class="track-img"></div>
 
                 <div class="track-infos">
@@ -50,11 +54,30 @@
                 </div>
                 <div class="buttons">
                     <div class="contain" align="center">
-                        <button onclick="preview_track()">preview</button>
-                        <button onclick="random()">Random</button>
+
+                        <div class="cercle" onclick="preview_track()">
+                            <div class="trait"></div>
+                            <div class="trian" ></div>
+                        </div>
+
+                        <span class="pp">
+                            <div class="cercle" onclick="play_music()">
+                                <div class="triangle"></div>
+                            </div>
+                        </span>
+
+
+                        <div class="cercle" onclick="next_track()">
+                            <div class="triangle"></div>
+                            <div class="trait"></div>
+                        </div>
+
+
+                        <!-- <button onclick="preview_track()">preview</button> -->
+                        <!-- <button onclick="random()">Random</button>
                         <button onclick="play_music()" id="play">Play/Pause</button>
                         <button onclick="replay()">replay</button>
-                        <button onclick="next_track()">Next</button>
+                        <button onclick="next_track()">Next</button> -->
                     </div>
                     <br>
                     <div class="functions" align="center">
@@ -62,16 +85,46 @@
                     </div>
                 </div>
             </div>
-            <div class="section2">
-                <div id="box">
-                    <label for="colorPicker">THEME :</label>
-                    <input type="color" value="#8888ff" id="colorPicker">
+        <div class="section2">
 
-                </div>
+
+            <nav>
+                <ul class="entête">
+                    <li>Titre</li>
+                    <li>Artiste</li>
+                    <li>musique</li>
+                </ul>
+            </nav>
+            <div class="scroll">
+              <p>Titre 1</p>
+              <p>Titre 2</p>
+              <p>Titre 3</p>
+              <p>Titre 4</p>
+              <p>Titre 5</p>
+              <p>Titre 6</p>
+              <p>Titre 7</p>
+              <p>Titre 8</p>
+              <p>Titre 9</p>
+              <p>Titre 10</p>
+              <p>Titre 1</p>
+              <p>Titre 2</p>
+              <p>Titre 3</p>
+              <p>Titre 4</p>
+              <p>Titre 5</p>
+              <p>Titre 6)</p>
+              <p>Titre 7</p>
+              <p>Titre 8</p>
+              <p>Titre 9</p>
+              <p>Titre 10</p>
             </div>
         </div>
     </div>
-    
-    
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>

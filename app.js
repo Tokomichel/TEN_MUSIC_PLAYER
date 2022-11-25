@@ -1,9 +1,9 @@
-let current_music = document.createElement('audio');
-let track_index = 0;
+let current_music = document.createElement('audio'); //element qui se  charge de jouer la musique
+let track_index = 0; // variable qui va contenir l'index du track que l'on veut lire
 
-let is_playing = false;
-let is_paused = false;
-let auto_play = true;
+let is_playing = false; // bool: permet de savoir si la musique est en lecture(true) ou pas (false)
+let is_paused = false; //bool: vois si on a mis pause
+let auto_play = true; //Si l'auto play est active
 
 let track_duration = document.querySelector('.elapsed');
 let volume = document.querySelector('.le-volume');
@@ -13,6 +13,7 @@ let title = document.querySelector('.track-title');
 let author = document.querySelector('.track-author');
 let vibration = document.getElementsByClassName('vibration');
 let button_auto = document.querySelector('.auto-play');
+let container = document.querySelector(".container");
 let image = document.querySelector(".track-img");
 
 let body = document.body;
@@ -20,14 +21,21 @@ let button_mode = document.getElementById('mode');
 let is_day = true;
 
 let timer;
-let timer2;
 
 
+
+let mp = document.getElementsByClassName('t');
 let colorPicker = document.getElementById("colorPicker");
 let box = document.getElementById("box");
+let scroll = document.querySelector(".scroll");
+let triangles = document.querySelectorAll(".triangle");
+let trian = document.querySelector(".trian");
+let traits = document.querySelectorAll(".trait");
+let traits1 = document.querySelectorAll(".trait1");
+
 let output;
 
-
+let pp = document.querySelector(".pp");
 
 let musics_list = 
 [
@@ -36,6 +44,12 @@ let musics_list =
         auteur: "Kareyce Fotso",
         image: "images/Mayole.jpg",
         titre: "Mayole"
+    },
+    {
+        source: "musics/Lydol - Mal être, ma lettre.mp4",
+        auteur: "Lydol",
+        image: "images/lydol.png",
+        titre: "Mal être, ma lettre"
     },
     {
         source: "musics/Stromae - Mon amour (Official Audio).mp3",
@@ -64,16 +78,49 @@ let musics_list =
     
 ];
 
+
+
 output = document.getElementById("output");
 
-box.style.borderColor = colorPicker.value;
+
+set_color(colorPicker.value);
 
 colorPicker.addEventListener("input", function(event) {
-    box.style.borderColor = event.target.value;
+    // box.style.borderColor = event.target.value;
+    container.style.borderColor = event.target.value;
+    track_duration.style.backgroundColor = event.target.value;
+    track_duration.style.borderColor = event.target.value;
+    volume.style.backgroundColor = event.target.value;
+    volume.style.borderColor = event.target.value;
+    scroll.style.webkitScrollbarThumb = event.target.value;
+    // triangle.style.borderLeft = "27px solid" + event.target.value;
+    trian.style.borderRight = "27px solid" + event.target.value;
+    // trait.style.backgroundColor = event.target.value;
+
+
+    for (let index = 0; index < mp.length; index++) {
+        mp[index].style.color = event.target.value;
+        
+    }
+    for (let index = 0; index < triangles.length; index++) {
+        triangles[index].style.borderLeft = "27px solid" + event.target.value;
+        
+    }
+    for (let index = 0; index < traits.length; index++) {
+        traits[index].style.backgroundColor = event.target.value;
+        
+    }
+    for (let i = 0; i < traits1.length; i++) {
+        traits1[i].style.backgroundColor = event.target.value;
+        console.log(traits1[i].style.backgroundColor);
+         
+     }
+    // mp.style.backgroundColor = event.target.value;
+
 }, false);
 
 colorPicker.addEventListener("change", function(event) {
-    output.innerText = "Couleur choisie : " + colorPicker.value;
+    console.log("colorpicker value" + colorPicker.value);
 }, false);
 
 //checker le cote ftp
@@ -84,11 +131,76 @@ remove_vibrations();
 autoPlay();
 mode();
 
+function change_appearence()
+{
+    let pause = "<div class=\"pause\" onclick=\"play_music()\"><div class=\"trait1\"></div><div class=\"trait1\"></div></div>";
+    let play = "<div class=\"cercle\" onclick=\"play_music()\"><div class=\"triangle\"></div></div>";
+
+    if(is_playing)
+    {
+        pp.innerHTML = play;
+        triangles = document.querySelectorAll(".triangle");
+        traits = document.querySelectorAll(".trait");
+        
+
+        
+    }
+        
+    else
+    {
+        pp.innerHTML = pause;   
+        traits1 = document.querySelectorAll(".trait1");
+        console.log(traits1); 
+    }
+
+    set_color(colorPicker.value);
+}
+
+function set_color(value)
+{
+    // let table = [
+    //     container.style,
+    //     track_duration.style,
+    //     volume
+    // ]
+
+    for (let index = 0; index < mp.length; index++) {
+        mp[index].style.color = value;
+        
+    }
+    for (let index = 0; index < triangles.length; index++) {
+        triangles[index].style.borderLeft = "27px solid" + value;
+        
+    }
+    for (let index = 0; index < traits.length; index++) {
+        traits[index].style.backgroundColor = value;
+        
+    }
+    for (let i = 0; i < traits1.length; i++) {
+       traits1[i].style.backgroundColor = value;
+        
+    }
+
+    container.style.borderColor = value;
+    track_duration.style.backgroundColor = value;
+    track_duration.style.borderColor = value;
+    volume.style.borderColor = value;
+    volume.style.backgroundColor = value;
+    scroll.style.webkitScrollbarThumb = value;
+    // triangle.style.borderLeft = "27px solid" + value;
+    trian.style.borderRight = "27px solid" + value;
+    // trait.style.backgroundColor = "27 solid" + value;
+    
+
+
+}
+
 function mode()
 {
     if(is_day)
     {
         body.style.backgroundColor = "rgb(26, 47, 69)";
+        container.borderColor = "rgb(191, 194, 197)";
         is_day = false;
         console.log(body.style.backgroundColor);
         button_mode.innerHTML = "Nuit";
@@ -98,6 +210,8 @@ function mode()
     {
         button_mode.innerHTML = "Jour";
         body.style.backgroundColor = "rgb(191, 194, 197)";
+        container.borderColor = "rgb(26, 47, 69)"
+
         is_day = true;
     }
 }
@@ -182,6 +296,7 @@ function load_track() //charge les donnees
 
     }
     current_music.load();
+    
 }
 
 function play_transition()
@@ -194,6 +309,7 @@ function play_transition()
 
 function play_music()
 {    
+    change_appearence();
     if(!is_playing)
     {
         if(is_paused)
@@ -211,7 +327,9 @@ function play_music()
             is_playing = true;
             is_paused = true;
         }
-        timer = setInterval(update_slider, 500);
+        timer = setInterval(update_slider, 300);
+        //console.log(timer);
+
     }
     else
     {
