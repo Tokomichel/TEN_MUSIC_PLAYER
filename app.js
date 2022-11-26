@@ -22,7 +22,7 @@ let is_day = true;
 
 let timer;
 
-
+let picture = document.querySelector(".mod");
 
 let mp = document.getElementsByClassName('t');
 let colorPicker = document.getElementById("colorPicker");
@@ -120,7 +120,6 @@ colorPicker.addEventListener("input", function(event) {
 }, false);
 
 colorPicker.addEventListener("change", function(event) {
-    console.log("colorpicker value" + colorPicker.value);
 }, false);
 
 //checker le cote ftp
@@ -150,7 +149,6 @@ function change_appearence()
     {
         pp.innerHTML = pause;   
         traits1 = document.querySelectorAll(".trait1");
-        console.log(traits1); 
     }
 
     set_color(colorPicker.value);
@@ -200,19 +198,17 @@ function mode()
     if(is_day)
     {
         body.style.backgroundColor = "rgb(26, 47, 69)";
-        container.borderColor = "rgb(191, 194, 197)";
         is_day = false;
-        console.log(body.style.backgroundColor);
-        button_mode.innerHTML = "Nuit";
+        picture.src = "sun_30px.png"; 
+        
 
     }
     else
     {
-        button_mode.innerHTML = "Jour";
         body.style.backgroundColor = "rgb(191, 194, 197)";
-        container.borderColor = "rgb(26, 47, 69)"
-
         is_day = true;
+        picture.src = "crescent_moon_50px.png";
+        console.log(picture);
     }
 }
 
@@ -241,8 +237,10 @@ function next_track() //permet de passer ala piste suivante
        track_index = 0;
     else
        track_index ++;
-    load_track();
-    play_transition();
+
+    is_playing = false;
+    is_paused = false;
+    play_music();
 }
 
 function preview_track() //permet de passer a la piste precedente
@@ -253,8 +251,10 @@ function preview_track() //permet de passer a la piste precedente
     }
     else
         track_index --;
-    load_track();
-    play_transition();
+    
+    is_playing = false;
+    is_paused = false;
+    play_music();
 }
 
 function autoPlay() //permet de jouer la musique aurtomatiquement
@@ -303,6 +303,8 @@ function play_transition()
 {
     current_music.play();
     animate();
+    change_appearence();
+    timer = setInterval(update_slider, 300);
     is_playing = true;
     is_paused = false;
 }
