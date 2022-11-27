@@ -1,5 +1,6 @@
 let current_music = document.createElement('audio'); //element qui se  charge de jouer la musique
 let track_index = 0; // variable qui va contenir l'index du track que l'on veut lire
+let list_idx = 0; //index de la liste de lecture
 
 let is_playing = false; // bool: permet de savoir si la musique est en lecture(true) ou pas (false)
 let is_paused = false; //bool: vois si on a mis pause
@@ -28,6 +29,8 @@ let mp = document.getElementsByClassName('t');
 let colorPicker = document.getElementById("colorPicker");
 let box = document.getElementById("box");
 let scroll = document.querySelector(".scroll");
+let section2 = document.querySelector(".section2");
+let tracks = document.querySelectorAll(".track");
 let triangles = document.querySelectorAll(".triangle");
 let trian = document.querySelector(".trian");
 let traits = document.querySelectorAll(".trait");
@@ -36,6 +39,7 @@ let traits1 = document.querySelectorAll(".trait1");
 let output;
 
 let pp = document.querySelector(".pp");
+
 
 let musics_list = 
 [
@@ -78,8 +82,40 @@ let musics_list =
     
 ];
 
+let gospel = [
+    {
+        source: "gospel/001 Divin amour.mp3",
+        auteur: "Gaël",
+        image: "",
+        titre: "Divin Amour"
+    },
+    {
+        source: "gospel/ABRAHAM - On Dit Que Partir C est Mourir un Peu.mp3",
+        auteur: "Noël Colombier",
+        image: "",
+        titre: "Partir c'est mourir un peur"
+    },
+    {
+        source: "gospel/Eternel écoute ma prière.mp3",
+        auteur: "Aimé Nkanu",
+        image: "",
+        titre: "Eternel écoute ma prière"
+    },
+    {
+        source: "gospel/Purifie nos coeurs Louange + Paroles.mp3",
+        auteur: "Gaël",
+        image: "",
+        titre: "Purifie nos coeurs"
+    },
+    {
+        source: "gospel/Je dois partir I AIME NKANU.mp3",
+        auteur: "Aimé Nkanu",
+        image: "",
+        titre: "Je dois partir"
+    }
+]
 
-
+let listes_lecture = [musics_list, gospel];
 output = document.getElementById("output");
 
 
@@ -114,7 +150,7 @@ colorPicker.addEventListener("input", function(event) {
         traits1[i].style.backgroundColor = event.target.value;
         console.log(traits1[i].style.backgroundColor);
          
-     }
+    }
     // mp.style.backgroundColor = event.target.value;
 
 }, false);
@@ -125,24 +161,41 @@ colorPicker.addEventListener("change", function(event) {
 //checker le cote ftp
 
 
-
+load_list();
 remove_vibrations();
 autoPlay();
-mode();
+mode(true);
 
-function change_appearence()
+function load_liste(index)
+{
+    list_idx = index;
+    load_list();
+    mode(false);
+}
+
+function play_on_click(index)
+{
+    track_index = index;
+    clearInterval(timer);
+    load_track();
+    current_music.play();
+    animate();
+    is_playing = true;
+    is_paused = false;
+    change_appearence(false);
+    timer = setInterval(update_slider, 800);
+}
+
+function change_appearence(playing)
 {
     let pause = "<div class=\"pause\" onclick=\"play_music()\"><div class=\"trait1\"></div><div class=\"trait1\"></div></div>";
     let play = "<div class=\"cercle\" onclick=\"play_music()\"><div class=\"triangle\"></div></div>";
 
-    if(is_playing)
+    if(playing)
     {
         pp.innerHTML = play;
         triangles = document.querySelectorAll(".triangle");
         traits = document.querySelectorAll(".trait");
-        
-
-        
     }
         
     else
@@ -193,23 +246,70 @@ function set_color(value)
 
 }
 
-function mode()
+function mode(day)
 {
-    if(is_day)
+    if(day)
     {
-        body.style.backgroundColor = "rgb(26, 47, 69)";
-        is_day = false;
-        picture.src = "sun_30px.png"; 
-        
+        if(is_day)
+     {
+           body.style.backgroundColor = "rgb(35, 41, 47)";
+           body.style.color = "rgb(150, 151, 152)";
+           section2.style.backgroundColor = "rgb(41, 46, 52)";
+           picture.src = "sun_30px.png"; 
+           is_day = false;
+           for(let i = 0; i < tracks['length']; i++)
+           {
+               tracks[i].style.backgroundColor = "rgb(35, 41, 47)";
+           }
 
+     }
+        else
+        {
+           
+           body.style.backgroundColor = "rgb(191, 194, 197)";
+           body.style.color = "rgb(51, 53, 55)";
+           section2.style.backgroundColor = "rgb(178, 178, 178)";
+           is_day = true;
+           picture.src = "crescent_moon_50px.png";
+   
+           for(let i = 0; i < tracks['length']; i++)
+           {
+               tracks[i].style.backgroundColor = "rgb(191, 194, 197)";
+           }
+        }
     }
     else
     {
-        body.style.backgroundColor = "rgb(191, 194, 197)";
-        is_day = true;
-        picture.src = "crescent_moon_50px.png";
-        console.log(picture);
+        if(is_day)
+        {
+            for(let i = 0; i < tracks['length']; i++)
+            {
+                tracks[i].style.backgroundColor = "rgb(191, 194, 197)";
+            }
+        }
+        else
+        {
+            for(let i = 0; i < tracks['length']; i++)
+           {
+            tracks[i].style.backgroundColor = "rgb(35, 41, 47)";
+           }
+        }
     }
+}
+
+function load_list()
+{
+    scroll.innerHTML = "";
+    for (let i = 0; i < listes_lecture[list_idx].length; i++) {
+        if(!(i % 2 == 0))
+        {
+            scroll.innerHTML += "<div class=\"track1\" onclick=\"play_on_click(" + i + ")\">" + listes_lecture[list_idx][i].auteur + " - " + listes_lecture[list_idx][i].titre + "</div>";
+        }
+        else
+        scroll.innerHTML += "<div class=\"track\" onclick=\"play_on_click(" + i + ")\">" + listes_lecture[list_idx][i].auteur + " - " + listes_lecture[list_idx][i].titre + "</div>";
+        
+    }
+    tracks = document.querySelectorAll(".track");
 }
 
 function animate() //fonction permettant d'animer les spectres
@@ -233,7 +333,7 @@ function remove_vibrations() //fonction qui enleve les spectre du document html
 
 function next_track() //permet de passer ala piste suivante
 {
-    if(track_index == musics_list.length - 1)
+    if(track_index == listes_lecture[list_idx].length - 1)
        track_index = 0;
     else
        track_index ++;
@@ -247,7 +347,7 @@ function preview_track() //permet de passer a la piste precedente
 {
     if( track_index == 0)
     {
-        track_index = musics_list.length - 1;
+        track_index = listes_lecture[list_idx].length - 1;
     }
     else
         track_index --;
@@ -281,18 +381,19 @@ function replay() //permet de rejouer la piste
 
 function load_track() //charge les donnees
 {
+    clearInterval(timer);
     track_duration.value = 0;
     // current_music.volume = volume.value;
-    current_music.src = musics_list[track_index].source;
-    title.innerHTML = musics_list[track_index].titre;
-    author.innerHTML = musics_list[track_index].auteur;
-    if(musics_list[track_index].image == "")
+    current_music.src = listes_lecture[list_idx][track_index].source;
+    title.innerHTML = listes_lecture[list_idx][track_index].titre;
+    author.innerHTML = listes_lecture[list_idx][track_index].auteur;
+    if(listes_lecture[list_idx][track_index].image == "")
     {
         image.src = "images/null.jpg";
     }
     else
     {
-        image.src = musics_list[track_index].image;
+        image.src = listes_lecture[list_idx][track_index].image;
 
     }
     current_music.load();
@@ -311,7 +412,7 @@ function play_transition()
 
 function play_music()
 {    
-    change_appearence();
+    change_appearence(is_playing);
     if(!is_playing)
     {
         if(is_paused)
@@ -329,8 +430,7 @@ function play_music()
             is_playing = true;
             is_paused = true;
         }
-        timer = setInterval(update_slider, 300);
-        //console.log(timer);
+        timer = setInterval(update_slider, 800);
 
     }
     else
@@ -340,7 +440,6 @@ function play_music()
         remove_vibrations();
         is_playing = false;
         is_paused = true;
-
     }
 }
 
@@ -374,10 +473,10 @@ function random_bg_color() //genere un code de couleur aleatoire hexadecimale
 
 function seek_to() //permet de se deplacer sur les slide en meme temps que la musique
 {
-    let ici = current_music.duration * (track_duration.value / 100);
     clearInterval(timer);
+    let ici = current_music.duration * (track_duration.value / 100);
     current_music.currentTime = ici;
-    timer = setInterval(update_slider, 500);
+    timer = setInterval(update_slider, 800);
 }
 
 function seek_to_volume() //version de seek_to du volume

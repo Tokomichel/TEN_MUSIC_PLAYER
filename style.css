@@ -7,13 +7,26 @@ body
 hr.infos-spectre
 {
     width: 70%;
+    color: rgb(186, 184, 184);
+    background-color: rgb(42, 45, 48);
+}
+
+li
+{
+   transition: all ease 0.7s;
+   cursor: pointer; 
+}
+
+li:hover
+{
+    color: rgb(245, 247, 241);
 }
 
 hr.section1-section2
 {
     height: 65%;
     margin-top: 100px;
-    border-color: rgba(235, 227, 227, 0.658);
+    border-color: rgb(168, 168, 168);
     background-color: rgba(50, 49, 49, 0.701);
 }
 
@@ -206,14 +219,16 @@ input[type=range].elapsed, input[type=range].le-volume
 /* .section2{
     
 } */
-
+.section2 .nav
+{
+    height: 8%;
+    width: 100%;
+}
 .section2 .scroll
 {
     overflow: scroll;
-    border-left: 1px solid rgb(112, 108, 108);
     width: 100%;
     height: 90%;
-
 }
 
 
@@ -226,6 +241,24 @@ input[type=range].elapsed, input[type=range].le-volume
 {
     background-color: #8f8f93;
     width: 100%;
+}
+
+.section2 .scroll .track
+{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    display: flex;
+    cursor: pointer;
+}
+
+.section2 .scroll .track1
+{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    display: flex;
+    cursor: pointer;
 }
 
 .entête{

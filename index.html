@@ -11,7 +11,7 @@
 <body>
     <div class="mode">
         <!-- <button type="submit" onclick="play_music()" id="mode">Nuit</button> -->
-        <span onclick="mode()" class="test"><img src="crescent_moon_50px.png" alt="" class="mod"></span>
+        <span onclick="mode(true)" class="test"><img src="crescent_moon_50px.png" alt="" class="mod"></span>
         <input type="color" value="#8888ff" id="colorPicker">
     </div>
 
@@ -88,15 +88,15 @@
         <div class="section2">
 
 
-            <nav>
+            <div class="nav">
                 <ul class="entête">
-                    <li>Titre</li>
-                    <li>Artiste</li>
-                    <li>musique</li>
+                    <li onclick="load_liste(0)">Musics</li>
+                    <li onclick="load_liste(1)">Gospel</li>
+                    <li onclick="load_liste(2)">Feelings</li>
                 </ul>
-            </nav>
+            </div>
             <div class="scroll">
-              <p>Titre 1</p>
+              <!-- <p>Titre 1</p>
               <p>Titre 2</p>
               <p>Titre 3</p>
               <p>Titre 4</p>
@@ -111,11 +111,11 @@
               <p>Titre 3</p>
               <p>Titre 4</p>
               <p>Titre 5</p>
-              <p>Titre 6)</p>
+              <p>Titre 6</p>
               <p>Titre 7</p>
               <p>Titre 8</p>
               <p>Titre 9</p>
-              <p>Titre 10</p>
+              <p>Titre 10</p> -->
             </div>
         </div>
     </div>
