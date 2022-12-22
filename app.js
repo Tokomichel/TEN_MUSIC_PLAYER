@@ -5,6 +5,7 @@ let list_idx = 0; //index de la liste de lecture
 let is_playing = false; // bool: permet de savoir si la musique est en lecture(true) ou pas (false)
 let is_paused = false; //bool: vois si on a mis pause
 let auto_play = true; //Si l'auto play est active
+let is_random = false;
 
 let track_duration = document.querySelector('.elapsed');
 let volume = document.querySelector('.le-volume');
@@ -14,6 +15,7 @@ let title = document.querySelector('.track-title');
 let author = document.querySelector('.track-author');
 let vibration = document.getElementsByClassName('vibration');
 let button_auto = document.querySelector('.auto-play');
+let button_random = document.querySelector('.random-play');
 let container = document.querySelector(".container");
 let image = document.querySelector(".track-img");
 
@@ -35,7 +37,7 @@ let triangles = document.querySelectorAll(".triangle");
 let trian = document.querySelector(".trian");
 let traits = document.querySelectorAll(".trait");
 let traits1 = document.querySelectorAll(".trait1");
-
+let rand_button = document.querySelector(".random-play");
 let output;
 
 let pp = document.querySelector(".pp");
@@ -78,8 +80,85 @@ let musics_list =
         auteur: "Curtis Harding",
         image: "images/Curtis Harding - On And On.jpg",
         titre: "On and On"
-    }
-    
+    },
+    {
+        source: "musics/Kalimba.mp3",
+        auteur: "Dj scruff",
+        image: "",
+        titre: "Kalimba"
+    },
+    {
+        source: "musics/La Medicina - Zouk La Se Sel Medikaman Nou Ni.mp3",
+        auteur: "Medicina",
+        image: "",
+        titre: "La medicina"
+    },
+    {
+        source: "musics/ma diretion.mp3",
+        auteur: "Sexion d'assaut",
+        image: "",
+        titre: "Ma direction"
+    },
+    {
+        source: "musics/Madcon - Beggin .mp3",
+        auteur: "Madcon",
+        image: "",
+        titre: "Beggin"
+    },
+    {
+        source: "musics/Maître Gims - La chute (Audio).mp3",
+        auteur: "Maitre Gims",
+        image: "",
+        titre: "La chute"
+    },
+    {
+        source: "musics/Patience Dabany - L'amour d'une mère.mp3",
+        auteur: "Patience Dabany",
+        image: "",
+        titre: "L'amour d'une mere"
+    },
+    {
+        source: "musics/Song of freedom.mp3",
+        auteur: "Bob Marley",
+        image: "",
+        titre: "Song of freedom"
+    },
+    {
+        source: "musics/Stromae - L’enfer (Official Music Video).mp3",
+        auteur: "Stromae Romae",
+        image: "",
+        titre: "L'enfer"
+    },
+    {
+        source: "musics/Stromae - La solassitude (Official Audio).mp3",
+        auteur: "Stromae Romae",
+        image: "",
+        titre: "La solassitude"
+    },
+    {
+        source: "musics/Charlotte Dipanda - Kénè So (Aller de l avant)mp3",
+        auteur: "Charlotte Dipanda",
+        image: "",
+        titre: "Kene So"
+    },
+    {
+        source: "musics/Black M - La nuit porte conseil (Clip officiel).mp3",
+        auteur: "Black M",
+        image: "",
+        titre: "La nuit porte conseil"
+    }, 
+    {
+        source: "musics/Bakermat - Baianá (Official Video).mp3",
+        auteur: "Bakermat",
+        image: "",
+        titre: "Baianá"
+    },
+    {
+        source: "musics/Asa Jailer with.mp3",
+        auteur: "Asa",
+        image: "",
+        titre: "Jailer"
+    },   
 ];
 
 let gospel = [
@@ -117,7 +196,6 @@ let gospel = [
 
 let listes_lecture = [musics_list, gospel];
 output = document.getElementById("output");
-
 
 set_color(colorPicker.value);
 
@@ -158,8 +236,8 @@ colorPicker.addEventListener("input", function(event) {
 colorPicker.addEventListener("change", function(event) {
 }, false);
 
-//checker le cote ftp
 
+//checker le cote ftp
 
 load_list();
 remove_vibrations();
@@ -254,12 +332,15 @@ function mode(day)
      {
            body.style.backgroundColor = "rgb(35, 41, 47)";
            body.style.color = "rgb(150, 151, 152)";
+           body.style.transition = "all 0.2s ease-in-out";
            section2.style.backgroundColor = "rgb(41, 46, 52)";
+           section2.style.transition = "all 0.2s ease-in-out";
            picture.src = "sun_30px.png"; 
            is_day = false;
            for(let i = 0; i < tracks['length']; i++)
            {
                tracks[i].style.backgroundColor = "rgb(35, 41, 47)";
+               tracks[i].style.transition = "all 0.2s ease-in-out";
            }
 
      }
@@ -343,6 +424,16 @@ function next_track() //permet de passer ala piste suivante
     play_music();
 }
 
+function next_track_random()
+{
+    let len = listes_lecture[list_idx].length;
+    track_index = Math.round(Math.random() * len);
+    load_track();
+    is_playing = false;
+    is_paused = false;
+    play_music();
+}
+
 function preview_track() //permet de passer a la piste precedente
 {
     if( track_index == 0)
@@ -371,6 +462,24 @@ function autoPlay() //permet de jouer la musique aurtomatiquement
     }
 }
 
+function random_play()
+{
+    auto_play = false;
+    if(!is_random)
+    {
+        console.log(is_random);
+        next_track_random();
+        is_random = true;
+        rand_button.style.backgroundColor = "rgb(54,217,86)";
+    }
+    else
+    {
+        console.log(is_random);
+        is_random = false;
+        rand_button.style.backgroundColor = "rgb(217,54,111)";
+    }
+}
+
 function replay() //permet de rejouer la piste
 {
     is_paused = false;
@@ -387,6 +496,7 @@ function load_track() //charge les donnees
     current_music.src = listes_lecture[list_idx][track_index].source;
     title.innerHTML = listes_lecture[list_idx][track_index].titre;
     author.innerHTML = listes_lecture[list_idx][track_index].auteur;
+
     if(listes_lecture[list_idx][track_index].image == "")
     {
         image.src = "images/null.jpg";
@@ -514,10 +624,21 @@ function update_slider() //update la position du slider par unite de temps
         }
         else
         {
-            is_playing = false;
-            is_paused = false;
-            next_track();
+            if(is_random)
+            {
+                is_playing = false;
+                is_paused = false;
+                next_track_random();
+            }
+            else
+            {
+                is_playing = false;
+                is_paused = false;
+                next_track();
+            }
+            
         }
     }
 }
+
 
