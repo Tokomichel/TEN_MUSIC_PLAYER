@@ -136,10 +136,16 @@ let musics_list =
         titre: "La solassitude"
     },
     {
-        source: "musics/Charlotte Dipanda - Kénè So (Aller de l avant)mp3",
+        source: "musics/Charlotte Dipanda - Kénè So (Aller de l avant).mp3",
         auteur: "Charlotte Dipanda",
         image: "",
         titre: "Kene So"
+    },
+    {
+        source: "musics/Charlotte Dipanda Ft Yémi Alade - Sista [Paroles ].mp3",
+        auteur: "Charlotte Dipanda Ft Yémi Alade",
+        image: "",
+        titre: "Sista [Paroles ]"
     },
     {
         source: "musics/Black M - La nuit porte conseil (Clip officiel).mp3",
@@ -196,6 +202,7 @@ let gospel = [
 
 let listes_lecture = [musics_list, gospel];
 output = document.getElementById("output");
+
 
 set_color(colorPicker.value);
 
@@ -640,5 +647,4 @@ function update_slider() //update la position du slider par unite de temps
         }
     }
 }
-
 
